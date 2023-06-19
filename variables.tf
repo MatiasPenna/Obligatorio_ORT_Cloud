@@ -1,14 +1,14 @@
-# Se define el perfil de AWS Cli
+# Se define el perfil de AWS
 variable "perfil" {
     default = "default"
 }
 
-# Se define la region de AWS Cli
+# Se define la region de AWS
 variable "region" {
   default = "us-east-1"
 }
 
-# Se define la porcion de red
+# Se definen porcion de red
 variable "cidr_block" {
     default = "10.0."
 }
