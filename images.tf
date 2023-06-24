@@ -7,4 +7,3 @@ resource "aws_ecr_repository" "obl_ecr" {
     scan_on_push = true
   }
 }
-

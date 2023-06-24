@@ -5,6 +5,6 @@ provider "aws" {
 
 resource "null_resource" "execute_script" {
   provisioner "local-exec" {
-    command = "cmd /C script.bat"
+    command = "./build.sh"
   }
 }
