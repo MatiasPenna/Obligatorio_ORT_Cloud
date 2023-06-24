@@ -20,7 +20,7 @@ kubectl config set-context --current --namespace=$namespace
 find "$folders" -type f -name "Dockerfile" | while read -r file; do
     
     image_tag=$(echo "$file" | awk -F'/' '{print $2}')
-    image_folder="/src/$image_tag/" 
+    image_folder="$folders/$image_tag/" 
 
     echo "Construyendo imagen desde $image_folder"
     sudo docker build -t "$image_tag:latest" $image_folder
