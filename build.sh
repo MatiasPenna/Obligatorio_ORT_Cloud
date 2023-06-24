@@ -19,16 +19,16 @@ kubectl config set-context --current --namespace=$namespace
 # Bucle para buscar y construir las imágenes Docker
 find "$folders" -type f -name "Dockerfile" | while read -r file; do
     
-    image_tag=$(echo "$file" | awk -F'/' '{print $3}')
+    image_tag=$(echo "$file" | awk -F'/' '{print $2}')
 
     echo "Construyendo imagen desde $file..."
-    docker build -t "$image_tag:latest" -f "$file" .
+    sudo docker build -t "$image_tag:latest" -f "$file" .
 
     echo "Etiquetando imagen para ECR..."
-    docker tag "$image_tag:latest" "$ecr_url/obligatorio:$image_tag"
+    sudo docker tag "$image_tag:latest" "$ecr_url/obligatorio:$image_tag"
 
     echo "Subiendo imagen a ECR..."
-    docker push "$ecr_url/obligatorio:$image_tag"
+    sudo docker push "$ecr_url/obligatorio:$image_tag"
 
     echo "Imagen $image_tag subida exitosamente a ECR."
 done
