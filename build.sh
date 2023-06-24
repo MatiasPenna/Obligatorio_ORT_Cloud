@@ -22,10 +22,10 @@ find "$folders" -type f -name "Dockerfile" | while read -r file; do
     image_tag=$(echo "$file" | awk -F'/' '{print $2}')
 
     echo "Construyendo imagen desde $file..."
-    sudo docker build -t "$image_tag:latest" -f "$file" .
+    sudo docker build -t "$image_tag:latest" .
 
-    echo "Etiquetando imagen para ECR..."
-    sudo docker tag "$image_tag:latest" "$ecr_url/obligatorio:$image_tag"
+    # echo "Etiquetando imagen para ECR..."
+    # sudo docker tag "$image_tag:latest" "$ecr_url/obligatorio:$image_tag"
 
     echo "Subiendo imagen a ECR..."
     sudo docker push "$ecr_url/obligatorio:$image_tag"
