@@ -10,9 +10,9 @@ namespace="obligatorio"
 
 folders="src"
 
-aws eks update-kubeconfig --name $cluster_name
+aws eks --region us-east-1 update-kubeconfig --name $cluster_name
 
-kubectl create namespace
+kubectl create namespace $namespace
 
 kubectl config set-context --current --namespace=$namespace
 
@@ -43,6 +43,7 @@ done
 for srv in "${services[@]}"; do
   sed -i "s/$ecr_url:$srv/<IMAGE:TAG>/g" $srv/deployment/kubernetes-manifests.yaml
 done
+
 kubectl get service | grep amazonaws.com | grep -Eo '\S*' | tail -n3 | head -n1
 
 
