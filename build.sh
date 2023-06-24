@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Entro en script"
+
 ecr_url=$(terraform output -raw ecr_url)
 
 cluster_name=$(terraform output -raw cluster_name)
