@@ -16,6 +16,8 @@ kubectl create namespace $namespace
 
 kubectl config set-context --current --namespace=$namespace
 
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ecr_url
+
 # Bucle para buscar y construir las imágenes Docker
 find "$folders" -type f -name "Dockerfile" | while read -r file; do
     
