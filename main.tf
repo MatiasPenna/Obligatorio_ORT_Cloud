@@ -3,8 +3,9 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "null_resource" "execute_script" {
+resource "aws_instance" "local_script" {
   depends_on = [aws_ecr_repository.obl_ecr]
+
   provisioner "local-exec" {
     command = "sh build.sh"
   }
