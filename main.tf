@@ -3,7 +3,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_instance" "local_script" {
+resource "null_resource" "local_script" {
   depends_on = [aws_ecr_repository.obl_ecr]
 
   provisioner "local-exec" {
