@@ -20,9 +20,10 @@ kubectl config set-context --current --namespace=$namespace
 find "$folders" -type f -name "Dockerfile" | while read -r file; do
     
     image_tag=$(echo "$file" | awk -F'/' '{print $2}')
+    image_folder="/src/$image_tag" 
 
-    echo "Construyendo imagen desde $file..."
-    docker build -t "$image_tag:latest" $file
+    echo "Construyendo imagen desde $image_folder"
+    docker build -t "$image_tag:latest" $image_folder
 
     echo "Etiquetando imagen para ECR..."
     docker tag "$image_tag:latest" "$ecr_url/obligatorio:$image_tag"
@@ -33,7 +34,7 @@ find "$folders" -type f -name "Dockerfile" | while read -r file; do
     echo "Imagen $image_tag subida exitosamente a ECR."
 done
 
-services=($(find "$folders" -maxdepth 1 -type d -printf '%f\n'))
+services=$(find "$folders" -maxdepth 1 -type d -printf '%f\n')
 
 for srv in "${services[@]}"; do
   sed -i "s/<IMAGE:TAG>/$ecr_url:$srv/g" $srv/deployment/kubernetes-manifests.yaml
