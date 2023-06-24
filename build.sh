@@ -23,10 +23,12 @@ find "$folders" -type f -name "Dockerfile" | while read -r file; do
     
     image_tag=$(echo "$file" | awk -F'/' '{print $2}')
 
-    if [[ "$image_tag" != "cartservice" ]]; then
-        image_folder="$folders/$image_tag/" 
+    if [ $image_tag != "cartservice" ]; then
+        image_folder="$folders/$image_tag/"
+        echo "$image_folder"
     else
-        image_folder="$folders/src/$image_tag/"
+        image_folder="$folders/$image_tag/src"
+        echo "$image_folder"
     fi
 
     echo "Construyendo imagen desde $image_folder"
