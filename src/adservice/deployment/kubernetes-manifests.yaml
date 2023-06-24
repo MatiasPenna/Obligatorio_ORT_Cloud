@@ -16,7 +16,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: ezagard/obligatorio:adservice
+        image: <IMAGE:TAG>
         ports:
         - containerPort: 9555
         env:

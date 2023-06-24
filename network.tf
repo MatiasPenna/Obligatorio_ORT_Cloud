@@ -1,6 +1,6 @@
 # Crear una VPC
 resource "aws_vpc" "vpc_obl" {
-  cidr_block = "${var.private_cidr_block}0.0/16"
+  cidr_block = "${var.cidr_block}0.0/16"
   tags = {
     Name = "vpc_obl"
   }
@@ -26,18 +26,6 @@ resource "aws_subnet" "subnet_obl_02" {
 
   tags = {
     Name = "subnet_obl_02"
-  }
-}
-
-#Creamos una subnet pública para el loadbalancer
-resource "aws_subnet" "private_subnet_obl_01" {
-  vpc_id                  = aws_vpc.vpc_obl.id
-  cidr_block              = "${var.cidr_block}100.0/24" 
-  availability_zone       = "${var.region}c"
-  map_public_ip_on_launch = true
-
-  tags = {
-    Name = "private_subnet_obl_01"
   }
 }
 

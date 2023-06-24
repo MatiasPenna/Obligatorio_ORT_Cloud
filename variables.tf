@@ -19,11 +19,6 @@ variable "repository_list" {
   default = ["adservice", "checkoutservice", "currencyservice", "emailservice", "frontend", "loadgenerator", "paymentservice", "productcatalogservice", "recommendationservice", "shippingservice", "redis"]
 }
 
-resource "random_string" "suffix" {
-  length = 8
-  special = false
-}
-
 variable "arn_id" {
   description = "ARN ID"
   default = "320466714090"

@@ -15,7 +15,7 @@ spec:
       serviceAccountName: default
       containers:
       - name: server
-        image: ezagard/obligatorio:shippingservice
+        image: <IMAGE:TAG>
         ports:
         - containerPort: 50051
         env:
