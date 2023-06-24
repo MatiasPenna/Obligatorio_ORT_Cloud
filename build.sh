@@ -22,7 +22,12 @@ aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS
 find "$folders" -type f -name "Dockerfile" | while read -r file; do
     
     image_tag=$(echo "$file" | awk -F'/' '{print $2}')
-    image_folder="$folders/$image_tag/" 
+
+    if [[ "$image_tag" != "cartservice" ]]; then
+        image_folder="$folders/$image_tag/" 
+    else
+        image_folder="$folders/src/$image_tag/"
+    fi
 
     echo "Construyendo imagen desde $image_folder"
     sudo docker build -t "$image_tag:latest" $image_folder
@@ -36,7 +41,7 @@ find "$folders" -type f -name "Dockerfile" | while read -r file; do
     echo "Imagen $image_tag subida exitosamente a ECR."
 done
 
-services=$(find "$folders" -maxdepth 1 -type d -printf '%f\n')
+services=$(find "$folders" -maxdepth 1 -type d -printf '%f\n' | grep -v "src")
 
 for srv in "${services[@]}"; do
   sed -i "s/<IMAGE:TAG>/$ecr_url:$srv/g" $srv/deployment/kubernetes-manifests.yaml
