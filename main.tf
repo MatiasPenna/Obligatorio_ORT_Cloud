@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "null_resource" "local_script" {
-  depends_on = [aws_ecr_repository.obl_ecr]
+  depends_on = [aws_eks_node_group.worker_node_obl_01]
 
   provisioner "local-exec" {
     command = "sh build.sh"

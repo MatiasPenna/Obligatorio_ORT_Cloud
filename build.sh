@@ -53,9 +53,3 @@ find "$folders" -type f -name "kubernetes-manifests.yaml" | while read -r file; 
 done
 
 kubectl get service | grep amazonaws.com | grep -Eo '\S*' | tail -n3 | head -n1
-
-
-
-
-    # echo "Ingresando a la cuenta de AWS..."
-    # aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin "$ECR_REPOSITORY"
