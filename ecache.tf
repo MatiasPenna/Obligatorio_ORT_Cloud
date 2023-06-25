@@ -1,12 +1,12 @@
 resource "aws_elasticache_subnet_group" "obl_ecache_subnets" {
-  name        = "obl_ecache"
+  name        = "oblecachesubn"
   description = "obl_ecache"
   subnet_ids  = [aws_subnet.subnet_obl_01.id, aws_subnet.subnet_obl_02.id]
 }
 
 resource "aws_elasticache_parameter_group" "obl_ecache_grp" {
-  name   = "obl_ecache"
-  family = "redis6.2"
+  name   = "oblecachegrp"
+  family = "redis6.x"
 
   parameter {
     name  = "maxmemory-policy"
@@ -15,7 +15,7 @@ resource "aws_elasticache_parameter_group" "obl_ecache_grp" {
 }
 
 resource "aws_elasticache_cluster" "obl_ecache_cluster" {
-  cluster_id           = "obl_ecache"
+  cluster_id           = "oblecache"
   engine               = "redis"
   engine_version       = "6.2"
   node_type            = "cache.t2.micro"
@@ -27,4 +27,4 @@ resource "aws_elasticache_cluster" "obl_ecache_cluster" {
 }
 
 
-data.elasticcache_url
+#data.elasticcache_url

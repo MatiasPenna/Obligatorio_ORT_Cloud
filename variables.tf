@@ -12,14 +12,3 @@ variable "region" {
 variable "cidr_block" {
     default = "10.0."
 }
-
-variable "repository_list" {
-  description = "List of repository names"
-  type = list
-  default = ["adservice", "checkoutservice", "currencyservice", "emailservice", "frontend", "loadgenerator", "paymentservice", "productcatalogservice", "recommendationservice", "shippingservice", "redis"]
-}
-
-variable "arn_id" {
-  description = "ARN ID"
-  default = "320466714090"
-}
