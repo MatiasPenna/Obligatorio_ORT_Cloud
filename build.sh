@@ -45,13 +45,11 @@ done
 
 services=$(find "$folders" -maxdepth 1 -type d -printf '%f\n' | grep -v "src")
 
-for srv in "${services[@]}"; do
-  sed -i "s/<IMAGE:TAG>/$ecr_url:$srv/g" $srv/deployment/kubernetes-manifests.yaml
-  kubectl create -f $srv/deployment/kubernetes-manifests.yaml
-done
-
-for srv in "${services[@]}"; do
-  sed -i "s/$ecr_url:$srv/<IMAGE:TAG>/g" $srv/deployment/kubernetes-manifests.yaml
+find "$folders" -type f -name "kubernetes-manifests.yaml" | while read -r file; do
+  srv=$(echo "$file" | awk -F'/' '{print $2}')
+  sed -i 's|<IMAGE:TAG>|'"${ecr_url}:${srv}"'|g' $file
+  kubectl create -f $file
+  sed -i 's|'"${ecr_url}":"${srv}"'|<IMAGE:TAG>|g' $file
 done
 
 kubectl get service | grep amazonaws.com | grep -Eo '\S*' | tail -n3 | head -n1
