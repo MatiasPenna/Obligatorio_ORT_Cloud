@@ -3,10 +3,18 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "null_resource" "local_script" {
-  depends_on = [aws_eks_node_group.worker_node_obl_01]
+resource "null_resource" "script_build" {
+  depends_on = [aws_eks_cluster.eks_obl_01]
 
   provisioner "local-exec" {
     command = "sh build.sh"
+  }
+}
+
+resource "null_resource" "script_kube" {
+  depends_on = [null_resource.script_build]
+
+  provisioner "local-exec" {
+    command = "sh kube.sh"
   }
 }
