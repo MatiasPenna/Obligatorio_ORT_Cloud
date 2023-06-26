@@ -1,8 +1,10 @@
 #!/bin/bash
 
+ruta_absoluta=$(pwd | sed 's/Obligatorio_ORT_Cloud.*/Obligatorio_ORT_Cloud/')
+
 namespace="obligatorio"
 
-folders="./deploy/src"
+folders="src"
 
 aws eks --region us-east-1 update-kubeconfig --name $1
 
@@ -13,6 +15,8 @@ kubectl create namespace $namespace
 kubectl config set-context --current --namespace=$namespace
 
 aws ecr get-login-password --region $3 | sudo docker login --username AWS --password-stdin $ecr_url
+
+cd "$ruta_absoluta"/deploy
 
 # Bucle para buscar y construir las imágenes Docker
 find "$folders" -type f -name "Dockerfile" | while read -r file; do
