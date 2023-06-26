@@ -6,6 +6,10 @@ cluster_name=$(terraform output -raw eks_cluster)
 
 namespace="obligatorio"
 
+ruta_absoluta=$(pwd | sed 's/Obligatorio_ORT_Cloud.*/Obligatorio_ORT_Cloud/')
+
+cd "$ruta_absoluta"/deploy
+
 folders="src"
 
 aws eks --region us-east-1 update-kubeconfig --name $cluster_name

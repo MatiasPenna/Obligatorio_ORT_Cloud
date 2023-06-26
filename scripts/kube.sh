@@ -5,6 +5,10 @@ ecr_url=$(terraform output -raw ecr_url)
 
 ecache_url=$(terraform output -raw ecache_url)
 
+ruta_absoluta=$(pwd | sed 's/Obligatorio_ORT_Cloud.*/Obligatorio_ORT_Cloud/')
+
+cd "$ruta_absoluta"/deploy
+
 folders="src"
 
 #Busca todas las rutas a partir de src que contengan un archivo llamado kubernetes-manifests.yaml y hace un bucle
