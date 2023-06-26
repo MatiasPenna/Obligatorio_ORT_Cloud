@@ -14,6 +14,10 @@ variable "perfil" {
   type = string
 }
 
+variable "instancetype" {
+  type = string
+}
+
 variable "namesg" {
   type = string
 }
@@ -69,5 +73,31 @@ variable "nodetypeec" {
   type = string
 }
 variable "nodecachenodesec" {
+  type = number
+}
+
+#EKS
+
+variable "nameclustereks" {
+  type = string
+}
+
+variable "versioneks" {
+  type = string
+}
+
+variable "nodegrpeks" {
+  type = string
+}
+
+variable "desiredeks" {
+  type = number
+}
+
+variable "maxeks" {
+  type = number
+}
+
+variable "mineks" {
   type = number
 }

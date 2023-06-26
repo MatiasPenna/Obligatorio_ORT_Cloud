@@ -29,7 +29,11 @@ variable "perfilmomodule" {
   type = string
 }
 
-variable "rolmomodule" {
+variable "rolmodule" {
+  type = string
+}
+
+variable "instancetypemodule" {
   type = string
 }
 
@@ -61,27 +65,67 @@ variable "namertbmodule" {
 variable "nameecmodule" {
   type = string
 }
+
 variable "descecmodule" {
   type = string
 }
+
 variable "namegrecmodule" {
   type = string
 }
+
 variable "familygrecmodule" {
   type = string
 }
+
 variable "clusteridecmodule" {
   type = string
 }
+
 variable "engineclusterecmodule" {
   type = string
 }
+
 variable "engineverecmodule" {
   type = string
 }
+
 variable "nodetypeecmodule" {
   type = string
 }
+
 variable "nodecachenodesecmodule" {
+  type = number
+}
+
+#EKS
+
+variable "nameclustereksmodule" {
+  type = string
+}
+
+variable "versioneksmodule" {
+  type = string
+}
+
+variable "nodegrpeksmodule" {
+  type = string
+}
+
+variable "desiredeksmodule" {
+  type = number
+}
+
+variable "maxeksmodule" {
+  type = number
+}
+
+variable "mineksmodule" {
+  type = number
+}
+
+#Repositorio
+
+variable "namerepoecrmodule" {
   type = number
 }

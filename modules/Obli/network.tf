@@ -2,7 +2,7 @@
 resource "aws_vpc" "vpc_obl" {
   cidr_block = "${var.cidr_block}0.0/16"
   tags = {
-    Name = "vpc_obl"
+    Name = var.namevpcmodule
   }
 }
 
@@ -10,7 +10,7 @@ resource "aws_vpc" "vpc_obl" {
 resource "aws_subnet" "subnet_obl_01" {
   vpc_id                  = aws_vpc.vpc_obl.id
   cidr_block              = "${var.cidr_block}1.0/24"
-  availability_zone       = "${var.region}a"
+  availability_zone       = var.AZAmodule
   map_public_ip_on_launch = true
 
   tags = {
@@ -21,7 +21,7 @@ resource "aws_subnet" "subnet_obl_01" {
 resource "aws_subnet" "subnet_obl_02" {
   vpc_id                  = aws_vpc.vpc_obl.id
   cidr_block              = "${var.cidr_block}2.0/24" 
-  availability_zone       = "${var.region}b"  
+  availability_zone       = var.AZA2module
   map_public_ip_on_launch = true
 
   tags = {
@@ -31,7 +31,7 @@ resource "aws_subnet" "subnet_obl_02" {
 
 # Crear un Security Group en la VPC creada anteriormente
 resource "aws_security_group" "sg_obl" {
-  name        = "sg_obl"
+  name        = var.namesgmodule
   description = "SG para el obligatorio"
 
   vpc_id = aws_vpc.vpc_obl.id
@@ -60,7 +60,7 @@ resource "aws_security_group" "sg_obl" {
   }
 
   tags = {
-    Name = "sg_obl"
+    Name = var.namesgmodule
   }
 }
 
@@ -71,6 +71,9 @@ resource "aws_route_table" "rt_obl" {
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.ig_obl.id
+  }
+  tags = {
+        Name = var.namertbmodule
   }
 }
 
@@ -90,6 +93,6 @@ resource "aws_internet_gateway" "ig_obl" {
   vpc_id = aws_vpc.vpc_obl.id
 
   tags = {
-    Name = "ig_obl"
+    Name = var.nameigwmodule
   }
 }
