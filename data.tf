@@ -1,7 +1,7 @@
-data "aws_ecr_repository" "obl_ecr" {
-  name = var.namerepoecr
-  depends_on = [module.obli]
-}
+# data "aws_ecr_repository" "obl_ecr" {
+#   name = var.namerepoecr
+#   depends_on = [module.obli]
+# }
 
 data "aws_eks_cluster" "eks_cluster" {
   name = var.nameclustereks

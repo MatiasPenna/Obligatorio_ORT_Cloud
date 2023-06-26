@@ -1,6 +1,6 @@
-output "ecr_url" {
-  value = data.aws_ecr_repository.obl_ecr.repository_url
-}
+# output "ecr_url" {
+#   value = data.aws_ecr_repository.obl_ecr.repository_url
+# }
 
 output "eks_cluster" {
   value = data.aws_eks_cluster.eks_cluster.name
