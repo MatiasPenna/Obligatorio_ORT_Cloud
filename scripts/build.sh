@@ -21,7 +21,7 @@ cd "$ruta_absoluta"/deploy
 # Bucle para buscar y construir las imágenes Docker
 find "$folders" -type f -name "Dockerfile" | while read -r file; do
 
-    image_tag=$(echo "$file" | awk -F'/' '{print $3}')
+    image_tag=$(echo "$file" | awk -F'/' '{print $2}')
 
     if [ $image_tag != "cartservice" ]; then
         image_folder="$folders/$image_tag/"

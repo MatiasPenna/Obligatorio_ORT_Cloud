@@ -17,7 +17,7 @@ cd "$ruta_absoluta"/deploy
 #Busca todas las rutas a partir de src que contengan un archivo llamado kubernetes-manifests.yaml y hace un bucle
 find "$folders" -type f -name "kubernetes-manifests.yaml" | while read -r file; do
   #La variable toma el nombre de cada servicio como valor
-  srv=$(echo "$file" | awk -F'/' '{print $3}')
+  srv=$(echo "$file" | awk -F'/' '{print $2}')
   #Como redis no lo vamos a levantar ejecutamos los comandos si el valor de srv no es redis
   if [ $srv != "redis" ]; then
     line_number=$(awk '/selector:/ {print NR; exit}' $file)
