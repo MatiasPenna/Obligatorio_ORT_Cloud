@@ -1,11 +1,11 @@
-# output "ecr_url" {
-#   value = data.aws_ecr_repository.obl_ecr.repository_url
-# }
+output "ecr_url" {
+   value = module.obli.ecr_url
+}
 
 output "eks_cluster" {
-  value = data.aws_eks_cluster.eks_cluster.name
+  value = module.obli.cluster_name
 }
 
 output "ecache_url" {
-  value = data.aws_elasticache_cluster.ecache_cluster.cache_nodes[0].address
+  value = module.obli.elasticache_url
 }

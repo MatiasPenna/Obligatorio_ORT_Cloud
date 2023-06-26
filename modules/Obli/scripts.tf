@@ -17,7 +17,7 @@
 
 resource "null_resource" "script_build" {
   provisioner "local-exec" {
-    command = "sh ./scripts/build.sh ${var.namerepoecrmodule}"
+    command = "sh ./scripts/build.sh"
   }
 }
 
