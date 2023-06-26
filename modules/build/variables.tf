@@ -1,3 +1,0 @@
-variable "nameclustereksmodule" {
-  type = string
-}
