@@ -3,5 +3,5 @@ data "aws_elasticache_cluster" "ecache_cluster" {
 }
 
 output "ecache_url" {
-  value = aws_elasticache_cluster.ecache_cluster.cache_nodes[0].address
+  value = aws_elasticache_cluster.data.aws_elasticache_cluster.ecache_cluster.cache_nodes[0].address
 }
