@@ -11,6 +11,9 @@ folders="src"
 find "$folders" -type f -name "kubernetes-manifests.yaml" | while read -r file; do
   #La variable toma el nombre de cada servicio como valor
   srv=$(echo "$file" | awk -F'/' '{print $2}')
+  if [ $srv == "cartservice" ]; then
+    awk '/initialDelaySeconds: 15/ {print; print "\t  timeoutSeconds: 30"; next} 1' $file
+  fi
   #Como redis no lo vamos a levantar ejecutamos los comandos si el valor de srv no es redis
   if [ $srv != "redis" ]; then
     #buscamos image:tag y lo reemplazamos por la url del ecr ":" y el nombre del servicio
@@ -21,9 +24,6 @@ find "$folders" -type f -name "kubernetes-manifests.yaml" | while read -r file; 
     kubectl create -f $file
     #Volvemos el valor inmage:tag por defecto
     sed -i 's|'"${ecr_url}":"${srv}"'|<IMAGE:TAG>|g' $file
-  fi
-  if [ $srv == "cartservice" ]; then
-    awk '/initialDelaySeconds: 15/ {print; print "\t  timeoutSeconds: 30"; next} 1'
   fi
 done
 
