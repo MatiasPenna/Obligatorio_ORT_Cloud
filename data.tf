@@ -1,7 +1,11 @@
-data "aws_elasticache_cluster" "ecache_cluster" {
-  cluster_id = var.clusteridec
+data "aws_ecr_repository" "ecr_url" {
+  name = var.clusteridec
 }
 
-output "ecache_url" {
-  value = data.aws_elasticache_cluster.ecache_cluster.cache_nodes[0].address
+data "aws_eks_cluster" "eks_cluster" {
+  name = var.clusteridec
+}
+
+data "aws_elasticache_cluster" "ecache_cluster" {
+  cluster_id = var.clusteridec
 }
