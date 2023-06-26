@@ -108,5 +108,6 @@ variable "nodecachenodesecmodule" {
 #Repositorio
 
 variable "namerepoecrmodule" {
-  type = number
+  type = string
+
 }

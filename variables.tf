@@ -111,5 +111,5 @@ variable "nodecachenodesec" {
 #Repositorio
 
 variable "namerepoecr" {
-  type = number
+  type = string
 }
