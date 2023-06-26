@@ -1,5 +1,5 @@
-module "Obli" {
-source = "./modules/Obli"
+module "obli" {
+source = "./modules/obli"
 count = 1
 
 regionmodule = var.region
@@ -43,4 +43,11 @@ nodecachenodesecmodule = var.nodecachenodesec
 
 namerepoecrmodule = var.namerepoecr
 
+}
+
+
+module "obli" {
+source = "./modules/build"
+count = 1
+depends_on = [obli]
 }
