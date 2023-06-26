@@ -1,8 +1,6 @@
 #!/bin/bash
 
-#ecr_url=$(terraform output -raw ecr_url)
-
-ecr_url=$(aws ecr describe-repositories --repository-names $1 --query 'repositories[0].repositoryUri' --output text)
+ecr_url=$(terraform output -raw ecr_url)
 
 cluster_name=$(terraform output -raw eks_cluster)
 

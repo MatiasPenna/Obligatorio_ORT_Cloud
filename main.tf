@@ -44,13 +44,3 @@ nodecachenodesecmodule = var.nodecachenodesec
 namerepoecrmodule = var.namerepoecr
 
 }
-
-
-module "build" {
-source = "./modules/build"
-count = 1
-depends_on = [module.obli]
-
-namerepoecrmodule = var.namerepoecr
-
-}
