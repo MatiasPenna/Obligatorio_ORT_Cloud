@@ -1,5 +1,5 @@
 module "deploy-boutique" {
-source = "./modules/obli"
+source = "./modules/Obli"
 count = 1
 
 # Network

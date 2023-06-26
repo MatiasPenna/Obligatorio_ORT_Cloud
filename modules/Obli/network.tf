@@ -1,6 +1,6 @@
 # Crear una VPC
 resource "aws_vpc" "vpc_obl" {
-  cidr_block = "${var.cidr_block}0.0/16"
+  cidr_block = "${var.cidr_blockmodule}0.0/16"
   tags = {
     Name = var.namevpcmodule
   }
@@ -9,7 +9,7 @@ resource "aws_vpc" "vpc_obl" {
 # Crear dos subnets privadas en la VPC
 resource "aws_subnet" "subnet_obl_01" {
   vpc_id                  = aws_vpc.vpc_obl.id
-  cidr_block              = "${var.cidr_block}1.0/24"
+  cidr_block              = "${var.cidr_blockmodule}1.0/24"
   availability_zone       = var.AZAmodule
   map_public_ip_on_launch = true
 
@@ -20,7 +20,7 @@ resource "aws_subnet" "subnet_obl_01" {
 
 resource "aws_subnet" "subnet_obl_02" {
   vpc_id                  = aws_vpc.vpc_obl.id
-  cidr_block              = "${var.cidr_block}2.0/24" 
+  cidr_block              = "${var.cidr_blockmodule}2.0/24" 
   availability_zone       = var.AZA2module
   map_public_ip_on_launch = true
 
@@ -48,7 +48,7 @@ resource "aws_security_group" "sg_obl" {
     from_port   = 6379
     to_port     = 6379
     protocol    = "tcp"
-    cidr_blocks = ["${var.cidr_block}0.0/16"]
+    cidr_blocks = ["${var.cidr_blockmodule}0.0/16"]
    }
   
 
