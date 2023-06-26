@@ -46,7 +46,7 @@ namerepoecrmodule = var.namerepoecr
 }
 
 
-module "obli" {
+module "build" {
 source = "./modules/build"
 count = 1
 depends_on = [obli]
