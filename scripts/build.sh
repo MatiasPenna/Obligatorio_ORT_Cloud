@@ -1,20 +1,18 @@
 #!/bin/bash
 
-ecr_url=$(terraform output -raw ecr_url)
-
-cluster_name=$(terraform output -raw cluster_name)
-
 namespace="obligatorio"
 
 folders="./deploy/src"
 
-aws eks --region us-east-1 update-kubeconfig --name $cluster_name
+aws eks --region us-east-1 update-kubeconfig --name $1
+
+ecr_url=$(aws ecr describe-repositories --repository-names $2 --query 'repositories[0].repositoryUri' --output text)
 
 kubectl create namespace $namespace
 
 kubectl config set-context --current --namespace=$namespace
 
-aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin $ecr_url
+aws ecr get-login-password --region $3 | sudo docker login --username AWS --password-stdin $ecr_url
 
 # Bucle para buscar y construir las imágenes Docker
 find "$folders" -type f -name "Dockerfile" | while read -r file; do

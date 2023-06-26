@@ -1,4 +1,4 @@
-module "deploy-boutique" {
+module "Obli" {
 source = "./modules/Obli"
 count = 1
 

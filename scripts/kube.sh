@@ -1,9 +1,11 @@
 #!/bin/bash
 
-#Cargamos las variables
-ecr_url=$(terraform output -raw ecr_url)
 
-elasticache_url=$(terraform output -raw elasticache_url)
+#Cargamos las variables
+
+elasticache_url=$(aws elasticache describe-cache-clusters --cache-cluster-id "$1" --query 'CacheClusters[0].CacheNodes[0].Endpoint.Address' --output text)
+
+ecr_url=$(aws ecr describe-repositories --repository-names "$2" --query 'repositories[0].repositoryUri' --output text)
 
 folders="./deploy/src"
 
