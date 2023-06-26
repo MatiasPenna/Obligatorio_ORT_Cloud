@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #Cargamos las variables
-ecr_url=$(terraform output -raw ecr_url)
+#ecr_url=$(terraform output -raw ecr_url)
+
+ecr_url=$(aws ecr describe-repositories --repository-names "$1" --query 'repositories[0].repositoryUri' --output text)
 
 ecache_url=$(terraform output -raw ecache_url)
 
