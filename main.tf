@@ -2,6 +2,8 @@ module "Obli" {
 source = "./modules/Obli"
 count = 1
 
+regionmodule = var.region
+
 # Network
 AZAmodule =  var.AZA
 AZA2module = var.AZA2
