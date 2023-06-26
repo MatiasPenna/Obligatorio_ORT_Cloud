@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ruta_absoluta=$(pwd | sed 's/Obligatorio_ORT_Cloud.*/Obligatorio_ORT_Cloud/')
 
 #Cargamos las variables
 
@@ -7,9 +8,11 @@ elasticache_url=$(aws elasticache describe-cache-clusters --cache-cluster-id "$1
 
 ecr_url=$(aws ecr describe-repositories --repository-names "$2" --query 'repositories[0].repositoryUri' --output text)
 
-folders="./deploy/src"
+folders="src"
 
 replicas=2
+
+cd "$ruta_absoluta"/deploy
 
 #Busca todas las rutas a partir de src que contengan un archivo llamado kubernetes-manifests.yaml y hace un bucle
 find "$folders" -type f -name "kubernetes-manifests.yaml" | while read -r file; do
