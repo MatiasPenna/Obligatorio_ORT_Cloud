@@ -12,11 +12,11 @@ find "$folders" -type f -name "kubernetes-manifests.yaml" | while read -r file; 
   #La variable toma el nombre de cada servicio como valor
   srv=$(echo "$file" | awk -F'/' '{print $2}')
   if [ $srv = "cartservice" ]; then
-    awk '/initialDelaySeconds: 15/ {print; print "\t  timeoutSeconds: 30"; next} 1' $file
+    awk '/initialDelaySeconds: 15/ {print; print "\t  timeoutSeconds: 30"; next} 1' $file > /dev/null
   fi
   #Como redis no lo vamos a levantar ejecutamos los comandos si el valor de srv no es redis
   if [ $srv != "redis" ]; then
-    awk '/selector:/ && !found {print "  replicas: 2"} {print} /selector:/ {found=1}' $file
+    awk '/selector:/ && !found {print "  replicas: 2"} {print} /selector:/ {found=1}' $file > /dev/null
     #buscamos image:tag y lo reemplazamos por la url del ecr ":" y el nombre del servicio
     sed -i 's|<IMAGE:TAG>|'"${ecr_url}:${srv}"'|g' $file
     #Si hay algun redis-cart lo reemplazamos por la url del elastic cache
