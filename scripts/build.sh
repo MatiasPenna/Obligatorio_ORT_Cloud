@@ -6,7 +6,7 @@ cluster_name=$(terraform output -raw cluster_name)
 
 namespace="obligatorio"
 
-folders="src"
+folders="./deploy/src"
 
 aws eks --region us-east-1 update-kubeconfig --name $cluster_name
 
@@ -19,7 +19,7 @@ aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS
 # Bucle para buscar y construir las imágenes Docker
 find "$folders" -type f -name "Dockerfile" | while read -r file; do
 
-    image_tag=$(echo "$file" | awk -F'/' '{print $2}')
+    image_tag=$(echo "$file" | awk -F'/' '{print $3}')
 
     if [ $image_tag != "cartservice" ]; then
         image_folder="$folders/$image_tag/"
