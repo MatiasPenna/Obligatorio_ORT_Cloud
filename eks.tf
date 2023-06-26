@@ -1,7 +1,7 @@
 # Crear un clúster de Kubernetes (usando EKS)
 resource "aws_eks_cluster" "eks_obl_01" {
   name     = "eks_obl_01"
-  role_arn = "arn:aws:iam::961090741709:role/LabRole"
+  role_arn = data.aws_iam_role.LabRole.arn
   version  = "1.27"
 
   vpc_config {

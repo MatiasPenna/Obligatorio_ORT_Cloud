@@ -23,5 +23,4 @@ resource "aws_elasticache_cluster" "obl_ecache_cluster" {
   parameter_group_name = aws_elasticache_parameter_group.obl_ecache_grp.name
   subnet_group_name    = aws_elasticache_subnet_group.obl_ecache_subnets.name
   security_group_ids   = [aws_security_group.sg_obl.id] 
-
 }

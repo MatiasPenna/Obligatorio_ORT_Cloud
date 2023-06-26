@@ -42,6 +42,15 @@ resource "aws_security_group" "sg_obl" {
      protocol    = "tcp"
      cidr_blocks = ["0.0.0.0/0"]
    }
+  
+  #Abre el puerto para utilizar el elastic cache (redis)
+   ingress {
+    from_port   = 6379
+    to_port     = 6379
+    protocol    = "tcp"
+    cidr_blocks = ["${var.cidr_block}0.0/16"]
+   }
+  
 
   egress {
     from_port   = 0
