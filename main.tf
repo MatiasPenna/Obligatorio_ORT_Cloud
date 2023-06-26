@@ -1,18 +1,44 @@
 module "deploy-boutique" {
 source = "./modules/obli"
 count = 1
+
+# Network
 AZAmodule =  var.AZA
 AZA2module = var.AZA2
 namesgmodule =  var.namesg
 namevpcmodule = var.namevpc
-instancetypemodule = var.instancetype
 nameigwmodule = var.nameig
 namertbmodule = var.namertb
-regionmodule = var.region
-perfilmomodule = var.perfil
-rolmodule = var.rol
 cidr_blockmodule = var.cidr_block
-rol = var.rolmodule
-public-key = var.public-keymodule
-namerepoecr = var.namerepoecrmodule
+
+# Data
+rolmodule = var.rol
+
+# EKS
+
+instancetypemodule = var.instancetype
+public-keymodule = var.public-key
+nameclustereksmodule = var.nameclustereks
+versioneksmodule = var.versioneks
+nodegrpeksmodule = var.nodegrpeks
+desiredeksmodule = var.desiredeks
+maxeksmodule = var.maxeks
+mineksmodule = var.mineks
+
+# ELASTIC CACHE
+
+nameecmodule = var.nameec
+descecmodule = var.descec
+namegrecmodule = var.namegrec
+familygrecmodule = var.familygrec
+clusteridecmodule = var.clusteridec
+engineclusterecmodule = var.engineclusterec
+engineverecmodule = var.engineverec
+nodetypeecmodule = var.nodetypeec
+nodecachenodesecmodule = var.nodecachenodesec
+
+#Repositorio
+
+namerepoecrmodule = var.namerepoecr
+
 }

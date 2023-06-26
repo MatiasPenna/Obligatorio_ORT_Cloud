@@ -1,19 +1,5 @@
-# Se define el perfil de AWS
-variable "perfilmodule" {
-    type = string
-}
-
-# Se define la region de AWS
-variable "regionmodule" {
-  type = string
-}
-
-# Se definen porcion de red
+# Network
 variable "cidr_blockmodule" {
-  type = string
-}
-
-variable "regionmodule" {
   type = string
 }
 
@@ -25,32 +11,12 @@ variable "AZA2module" {
   type = string
 }
 
-variable "perfilmomodule" {
-  type = string
-}
-
-variable "rolmodule" {
-  type = string
-}
-
-variable "instancetypemodule" {
-  type = string
-}
-
 variable "namesgmodule" {
   type = string
 }
 
 variable "namevpcmodule" {
     type = string  
-}
-
-variable "typemodule" {
-  type = string
-}
-
-variable "public-keymodule" {
-  type = string
 }
 
 variable "nameigwmodule" {
@@ -60,6 +26,47 @@ variable "nameigwmodule" {
 variable "namertbmodule" {
   type = string
 }
+
+#Data
+
+variable "rolmodule" {
+  type = string
+}
+
+#EKS
+
+variable "instancetypemodule" {
+  type = string
+}
+
+variable "public-keymodule" {
+  type = string
+}
+
+variable "nameclustereksmodule" {
+  type = string
+}
+
+variable "versioneksmodule" {
+  type = string
+}
+
+variable "nodegrpeksmodule" {
+  type = string
+}
+
+variable "desiredeksmodule" {
+  type = number
+}
+
+variable "maxeksmodule" {
+  type = number
+}
+
+variable "mineksmodule" {
+  type = number
+}
+
 #ELASTIC CACHE
 
 variable "nameecmodule" {
@@ -95,32 +102,6 @@ variable "nodetypeecmodule" {
 }
 
 variable "nodecachenodesecmodule" {
-  type = number
-}
-
-#EKS
-
-variable "nameclustereksmodule" {
-  type = string
-}
-
-variable "versioneksmodule" {
-  type = string
-}
-
-variable "nodegrpeksmodule" {
-  type = string
-}
-
-variable "desiredeksmodule" {
-  type = number
-}
-
-variable "maxeksmodule" {
-  type = number
-}
-
-variable "mineksmodule" {
   type = number
 }
 
