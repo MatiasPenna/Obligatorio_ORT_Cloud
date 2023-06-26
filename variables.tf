@@ -113,16 +113,3 @@ variable "nodecachenodesec" {
 variable "namerepoecr" {
   type = string
 }
-
-#Variables Output
-variable "ecr_url" {
-   type = string
-}
-
-variable "eks_cluster" {
-  type = string
-}
-
-variable "ecache_url" {
-  type = string
-}
