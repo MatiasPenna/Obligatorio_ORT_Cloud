@@ -49,5 +49,6 @@ namerepoecrmodule = var.namerepoecr
 module "build" {
 source = "./modules/build"
 count = 1
+nameclustereksmodule = var.nameclustereks
 depends_on = [module.obli]
 }
