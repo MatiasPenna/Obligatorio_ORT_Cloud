@@ -25,11 +25,12 @@ find "$folders" -type f -name "kubernetes-manifests.yaml" | while read -r file; 
     sed -i 's|<IMAGE:TAG>|'"${ecr_url}:${srv}"'|g' $file
     #Si hay algun redis-cart lo reemplazamos por la url del elastic cache
     sed -i 's|redis-cart|'"${ecache_url}"'|g' $file
-    #Creamos lo definido dentro de los yaml
+
     kubectl create -f $file
     #Volvemos el valor inmage:tag por defecto
     sed -i 's|'"${ecr_url}":"${srv}"'|<IMAGE:TAG>|g' $file
   fi
 done
+
 
 kubectl get service | grep amazonaws.com | grep -Eo '\S*' | tail -n3 | head -n1
