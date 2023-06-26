@@ -1,3 +1,7 @@
+variable "regionmodule" {
+  type = string
+}
+
 # Network
 variable "cidr_blockmodule" {
   type = string
