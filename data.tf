@@ -1,4 +1,4 @@
-data "aws_ecr_repository" "ecr_url" {
+data "aws_ecr_repository" "obl_ecr" {
   name = var.clusteridec
 }
 
