@@ -14,7 +14,7 @@ resource "aws_eks_cluster" "eks_obl_01" {
  resource "aws_eks_node_group" "worker_node_obl_01" {
   cluster_name      = aws_eks_cluster.eks_obl_01.name
   node_group_name   = "worker_node_obl_01"
-  node_role_arn     = "arn:aws:iam::961090741709:role/LabRole"
+  node_role_arn     = data.aws_iam_role.LabRole.arn
   subnet_ids        = [aws_subnet.subnet_obl_01.id, aws_subnet.subnet_obl_02.id]
   instance_types    = ["t3.large"]
 

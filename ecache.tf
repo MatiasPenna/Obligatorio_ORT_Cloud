@@ -25,6 +25,3 @@ resource "aws_elasticache_cluster" "obl_ecache_cluster" {
   security_group_ids   = [aws_security_group.sg_obl.id] 
 
 }
-
-
-#data.elasticcache_url

@@ -11,10 +11,9 @@ resource "null_resource" "script_build" {
   }
 }
 
-# resource "null_resource" "script_kube" {
-#   depends_on = [null_resource.script_build]
-
-#   provisioner "local-exec" {
-#     command = "sh kube.sh"
-#   }
-# }
+ resource "null_resource" "script_kube" {
+   depends_on = [null_resource.script_build]
+   provisioner "local-exec" {
+     command = "sh kube.sh"
+   }
+ }
