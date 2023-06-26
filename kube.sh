@@ -22,6 +22,9 @@ find "$folders" -type f -name "kubernetes-manifests.yaml" | while read -r file; 
     #Volvemos el valor inmage:tag por defecto
     sed -i 's|'"${ecr_url}":"${srv}"'|<IMAGE:TAG>|g' $file
   fi
+  if [ $srv == "cartservice" ]; then
+    awk '/initialDelaySeconds: 15/ {print; print "\t  timeoutSeconds: 30"; next} 1'
+  fi
 done
 
 kubectl get service | grep amazonaws.com | grep -Eo '\S*' | tail -n3 | head -n1
