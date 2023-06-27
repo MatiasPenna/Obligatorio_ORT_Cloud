@@ -187,4 +187,7 @@ terraform apply -var-file=terraform.tfvars
 
 3. Aqui vemos un ejemplo del despligue:
 
-https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/4389860e-c2bd-4f7f-8fa5-84b6e32f069d
+https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/19f03a6a-cef0-4c95-95f7-ff401b0ab263
+
+4. Al finalizar podemos ver que nos devuelve las siguiente ID:
+
