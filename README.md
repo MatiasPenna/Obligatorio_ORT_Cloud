@@ -46,6 +46,129 @@ Find **Protocol Buffers Descriptions** at the [`./pb` directory](./pb).
 | [loadgenerator](./src/loadgenerator)                 | Python/Locust | Continuously sends requests imitating realistic user shopping flows to the frontend.                                              |
 
 
-<p align="center">
-<img src="./docs/img/Diagrama.png" width="300" alt="Online Boutique" />
-</p>
+# Implementación de Soluciones Cloud 
+### Obligatorio 2023 
+
+## Comenzando 🚀
+
+Somos la consultora BitBeat y hemos sido contratados para modernizar y desplegar la arquitectura e infraestructura de una aplicación que actualmente corre en un datacenter on-premise llamada Online Bouteque con el objetivo de expandir sus operaciones por todo el mundo, haciendo llegar sus servicios de e-commerce y retail, a todo el continente de América.
+
+
+
+## Pre-requisitos 📋
+
+- [x] Terraform
+- [x] Git
+- [X] Aws cli
+- [x] Docker
+- [x] Kubectl
+- [x] Terminal Linux (para ejecución de bash)
+
+### Herramientas 🛠️
+
+- GitHub
+- AWS
+- GO
+- Java
+- Pyhton
+- Node.js
+
+### Providers :truck:
+
+- [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest)
+
+
+## Código de la infraestructura automatizada 
+
+**_Los archivos con el código automatizado en terraform se encuentran en el directorio_** **Obligatorio_ORT_Cloud/modules/obli** at [`./Obligatorio_ORT_Cloud/modules/obli`](./Obligatorio_ORT_Cloud/modules/obli).
+
+
+| Archivo                                              | Descripción                                                                                                                      |
+| ----------------------------------------------------  | ---------------------------------------------------------------------------------- |
+| [data](./Obligatorio_ORT_Cloud/modules/obli/data.tf)                           | Carga de datos que se utilizaran luego en el código |
+| [ecache](./Obligatorio_ORT_Cloud/modules/obli/ecache.tf)                       | Configuración de Elastic Cache |
+| [eks](./Obligatorio_ORT_Cloud/modules/obli/eks.tf)                             | Configuración de K8s |
+| [images](./Obligatorio_ORT_Cloud/modules/obli/images.tf)                       | Configuración del repositorio y push de imagenes |
+| [network](./Obligatorio_ORT_Cloud/modules/obli/network.tf)                     | Configuración de la VPC y todos sus componentes y Grupos de seguridad definidos|
+| [output](./Obligatorio_ORT_Cloud/modules/obli/output.tf)                       | Informacion devuelta luego de la ejecución |
+| [scripts](./Obligatorio_ORT_Cloud/modules/obli/scripts.tf)                     | Ejecución de scripts |
+| [variables](./Obligatorio_ORT_Cloud/modules/obli/variables.tf)                 | Variables utilizadas en el modulo|
+
+**_Los archivos con el código para la ejución del modulo **obli** se encuentran en el directorio_** **Obligatorio_ORT_Cloud** at [`./Obligatorio_ORT_Cloud`](./Obligatorio_ORT_Cloud).
+
+| Archivo                                              | Descripción                                                                                                                      |
+| ----------------------------------------------------  | ---------------------------------------------------------------------------------- |
+| [data](./Obligatorio_ORT_Cloud//data.tf)                           | Carga de datos que se utilizaran luego en el código |
+| [main](./Obligatorio_ORT_Cloud/main.tf)                           | Ejecucion del modulo y carga de variables |
+| [output](./Obligatorio_ORT_Cloud/output.tf)                       | Informacion devuelta luego de la ejecución |
+| [provider](./Obligatorio_ORT_Cloud/provider.tf)                   | Provider de AWS |
+| [terraform](./Obligatorio_ORT_Cloud/terraform.tfvars)                       | Valor de las variables en general |
+| [variables](./Obligatorio_ORT_Cloud/variables.tf)                 | Variables utilizadas |
+
+**Listado de variables utilizadas en la automatización**
+| Variable                           | Valor por defecto                              | Uso                                                                                          |
+| ----------------------------------------------------  | ------------------------------ | ---------------------------------------------------- |
+| perfil                           | default |   Perfil de conexión para aws |
+| region                           | us-east-1 |   Región en la que se crearan los servicios |
+| cidr_block                           | 10.0. |   Asignacion de red |
+| AZA                              | us-east-1a | Zona de disponibilidad 1 |
+| AZA2                             | us-east-1b | Zona de disponibilidad 2 |
+| namesg                           | sg_obli    | Nombre de Security Gruop |
+| namevpc                          | vpc_obl    | Nombre de VPC |
+| nameig                           | igw_obli   | Nombre de Internet Gateway |
+| namertb                          | rtb_obl    | Nombre Route Table |
+| instancetype                     | t3.large   |   |
+| public-key                       | vockey     |   |
+| nameclustereks                   | eks_obl_01 | Nombre del Cluster  |
+| versioneks                       | 1.27       |   |
+| nodegrpeks                       | worker_node_obl_01 |   |
+| desiredeks                       | 2          | Cantidad de workers desaados  |
+| maxeks                           | 2          | Cantidad de workers maximos  |
+| mineks                           | 2          | Cantidad de workers minimos  |
+| nameec                           | oblecachesubn |    |
+| descec                           | obl_ecache |   |
+| namegrec                         | oblecachegrp |     |
+| familygrec                       | redis6.x   |     |
+| clusteridec                      | oblecache  |    |
+| engineclusterec                  | redis      |       |
+| engineverec                      | 6.2        |       |
+| nodetypeec                       | cache.t2.micro |       |
+| nodecachenodesec                 | 1          |    |
+| namerepoecr                      | obl_ecr    |
+| rol                              | LabRole    |      |
+
+
+**_Los archivos con el código automatizado en bash se encuentran en el directorio_** **scripts** at [`./scripts`](./scripts).
+
+| Archivo                                              | Descripción                                                                                                                      |
+| ----------------------------------------------------  | ---------------------------------------------------------------------------------- |
+| [build](./scripts/build.sh)                     | Scripts de creación de namespaces, imagnes de docker |
+| [kube](./scripts/kube.sh)                     | Scripts de asignación de las imagenes de Docker, cantida de replicas y devuleve la URL del servicio publicado |
+
+
+
+## Diagrama de arquitectura completo
+
+![alt text](docs/img/Diagrama.png)
+
+
+### Arquitectura :gear:
+
+Creamos dentro de una región dos zonas de disponibilidad para tener redundancia y alta disponibilidad con dos cluster de kubernetes, un load balancer para cargar bien las aplicaciones, y dos subnets privadas. 
+
+## Datos de la infraestructura 
+
+| Componente                 |  Nombre  | Valor           | Uso                                                                                                     |
+| --------------------------- | ---------|-------------------- | ----------------------------------------------------- |
+| Grupo de seguridad  | sg_obli  |  Puerto 80  - Puerto 22 - Puerto 6379  | Permite el acceso a los servicios de eks|
+| CIDR  | cidr_block   |  10.0.0.0 /16    | Configurar la red de las subnets|
+| Public subnet 1 | subnet_obl_01    |  10.0.1.0 /24    | Definicion de subnet publica|
+| Public subnet 2 | bsubnet_obl_01   |  10.0.2.0 /24    | Definicion de subnet publica|
+
+
+## Servicios de AWS
+
+- VPC - Amazon Virtual Private Cloud 
+- EKS - Kubernetes 
+- ECR - registry
+- EC - Elastic Cache
