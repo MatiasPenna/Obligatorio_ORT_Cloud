@@ -25,6 +25,7 @@ find "$folders" -type f -name "Dockerfile" | while read -r file; do
 
     image_tag=$(echo "$file" | awk -F'/' '{print $2}')
 
+    #Cartservice tiene el Dockerfile en una ruta diferente, con este if hacemos el ajuste
     if [ $image_tag != "cartservice" ]; then
         image_folder="$folders/$image_tag/"
     else
