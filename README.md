@@ -78,30 +78,30 @@ Somos la consultora BitBeat y hemos sido contratados para modernizar y desplegar
 
 ## Código de la infraestructura automatizada 
 
-**_Los archivos con el código automatizado en terraform se encuentran en el directorio_** **Obligatorio_ORT_Cloud/modules/obli** at [`./Obligatorio_ORT_Cloud/modules/obli`](./Obligatorio_ORT_Cloud/modules/obli).
+**_Los archivos con el código automatizado en terraform se encuentran en el directorio_** **modules/obli** at [`./modules/obli`](./modules/obli).
 
 
 | Archivo                                              | Descripción                                                                                                                      |
 | ----------------------------------------------------  | ---------------------------------------------------------------------------------- |
-| [data](./Obligatorio_ORT_Cloud/modules/obli/data.tf)                           | Carga de datos que se utilizaran luego en el código |
-| [ecache](./Obligatorio_ORT_Cloud/modules/obli/ecache.tf)                       | Configuración de Elastic Cache |
-| [eks](./Obligatorio_ORT_Cloud/modules/obli/eks.tf)                             | Configuración de K8s |
-| [images](./Obligatorio_ORT_Cloud/modules/obli/images.tf)                       | Configuración del repositorio y push de imagenes |
-| [network](./Obligatorio_ORT_Cloud/modules/obli/network.tf)                     | Configuración de la VPC y todos sus componentes y Grupos de seguridad definidos|
-| [output](./Obligatorio_ORT_Cloud/modules/obli/output.tf)                       | Informacion devuelta luego de la ejecución |
-| [scripts](./Obligatorio_ORT_Cloud/modules/obli/scripts.tf)                     | Ejecución de scripts |
-| [variables](./Obligatorio_ORT_Cloud/modules/obli/variables.tf)                 | Variables utilizadas en el modulo|
+| [data](./modules/obli/data.tf)                           | Carga de datos que se utilizaran luego en el código |
+| [ecache](./modules/obli/ecache.tf)                       | Configuración de Elastic Cache |
+| [eks](./modules/obli/eks.tf)                             | Configuración de K8s |
+| [images](./modules/obli/images.tf)                       | Configuración del repositorio y push de imagenes |
+| [network](./modules/obli/network.tf)                     | Configuración de la VPC y todos sus componentes y Grupos de seguridad definidos|
+| [output](./modules/obli/output.tf)                       | Informacion devuelta luego de la ejecución |
+| [scripts](./modules/obli/scripts.tf)                     | Ejecución de scripts |
+| [variables](./modules/obli/variables.tf)                 | Variables utilizadas en el modulo|
 
 **_Los archivos con el código para la ejución del modulo **obli** se encuentran en el directorio_** **Obligatorio_ORT_Cloud** at [`./Obligatorio_ORT_Cloud`](./Obligatorio_ORT_Cloud).
 
 | Archivo                                              | Descripción                                                                                                                      |
 | ----------------------------------------------------  | ---------------------------------------------------------------------------------- |
-| [data](./Obligatorio_ORT_Cloud//data.tf)                           | Carga de datos que se utilizaran luego en el código |
-| [main](./Obligatorio_ORT_Cloud/main.tf)                           | Ejecucion del modulo y carga de variables |
-| [output](./Obligatorio_ORT_Cloud/output.tf)                       | Informacion devuelta luego de la ejecución |
-| [provider](./Obligatorio_ORT_Cloud/provider.tf)                   | Provider de AWS |
-| [terraform](./Obligatorio_ORT_Cloud/terraform.tfvars)                       | Valor de las variables en general |
-| [variables](./Obligatorio_ORT_Cloud/variables.tf)                 | Variables utilizadas |
+| [data](./data.tf)                           | Carga de datos que se utilizaran luego en el código |
+| [main](./main.tf)                           | Ejecucion del modulo y carga de variables |
+| [output](./output.tf)                       | Informacion devuelta luego de la ejecución |
+| [provider](./provider.tf)                   | Provider de AWS |
+| [terraform](./terraform.tfvars)                       | Valor de las variables en general |
+| [variables](./variables.tf)                 | Variables utilizadas |
 
 **Listado de variables utilizadas en la automatización**
 | Variable                           | Valor por defecto                              | Uso                                                                                          |
