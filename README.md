@@ -187,7 +187,5 @@ terraform apply -var-file=terraform.tfvars
 
 3. Aqui vemos un ejemplo el despligue:
 
-<video width="320" height="240" controls>
-  <source src="./docs/despliegue/Despliegue.mp4" type="video/mp4">
-  Tu navegador no admite la reproducción de videos.
+<video src="./docs/despliegue/Despliegue.mp4" controls="controls" style="max-width: 730px;">
 </video>
