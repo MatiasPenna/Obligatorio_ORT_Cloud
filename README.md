@@ -191,3 +191,20 @@ https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/19f03a6a-ce
 
 4. Al finalizar podemos ver que nos devuelve las siguiente ID:
 
+
+
+## Versiones
+
+- WSL 2 UBUNTU
+- Docker v24.0.2
+- Terraform v1.5.1
+- AWS CLI v2.12.3
+
+
+## Referencias bibliográficas
+
+
+
+## Autores
+- **Edgardo Chañ** - *Trabajo y documentacion* - [@echan92](https://github.com/echan92)
+- **Matias Penna** - *Trabajo y documentación* - [@MatiasPenna](https://github.com/MatiasPenna)
