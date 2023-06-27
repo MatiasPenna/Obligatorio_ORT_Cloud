@@ -10,6 +10,10 @@ output "cluster_namemodule" {
 #    value = aws_elasticache_cluster.obl_ecache_cluster.cache_nodes.0.address
 #  }
 
-  output "elasticache_cluster" {
-    value = aws_elasticache_cluster.obl_ecache_cluster
-  }
+output "elasticache_cluster" {
+  value = aws_elasticache_cluster.obl_ecache_cluster
+}
+
+output "script_build" {
+  value = null_resource.script_build
+}
