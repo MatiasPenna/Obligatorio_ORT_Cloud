@@ -1,6 +1,5 @@
 # Crear un clúster de Kubernetes (usando EKS)
 resource "aws_eks_cluster" "eks_obl_01" {
-  #depends_on = [aws_elasticache_cluster.obl_ecache_cluster]
   name     = var.nameclustereksmodule
   role_arn = data.aws_iam_role.LabRole.arn
   version  = var.versioneksmodule
