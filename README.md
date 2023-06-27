@@ -49,31 +49,29 @@ Find **Protocol Buffers Descriptions** at the [`./pb` directory](./pb).
 # Implementación de Soluciones Cloud 
 ### Obligatorio 2023 
 
-## Comenzando 🚀
+## Comenzando
 
-Somos la consultora BitBeat y hemos sido contratados para modernizar y desplegar la arquitectura e infraestructura de una aplicación que actualmente corre en un datacenter on-premise llamada Online Bouteque con el objetivo de expandir sus operaciones por todo el mundo, haciendo llegar sus servicios de e-commerce y retail, a todo el continente de América.
+Somos la consultora BitBeat y hemos sido contratados para modernizar y desplegar la arquitectura e infraestructura de su aplicación que actualmente corre en un datacenter on-premise.
 
 
 
-## Pre-requisitos 📋
+## Pre-requisitos
 
 - [x] Terraform
 - [x] Git
 - [X] Aws cli
 - [x] Docker
 - [x] Kubectl
-- [x] Terminal Linux (para ejecución de bash)
+- [x] Terminal Linux (para ejecución de scripts)
 
-### Herramientas 🛠️
+### Herramientas
 
 - GitHub
 - AWS
-- GO
-- Java
-- Pyhton
-- Node.js
+- Terraform
+- Kubernetes
 
-### Providers :truck:
+### Providers
 
 - [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest)
 
