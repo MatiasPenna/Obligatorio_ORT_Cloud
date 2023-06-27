@@ -170,3 +170,24 @@ Creamos dentro de una región dos zonas de disponibilidad para tener redundancia
 - EKS - Kubernetes 
 - ECR - registry
 - EC - Elastic Cache
+
+## Despliegue
+
+1. Clonar repositorio 
+```https://github.com/MatiasPenna/Obligatorio_ORT_Cloud.git```
+
+2. Entrar a Obligatorio_ORT_Cloud, iniciarlo y ejecutarlo
+
+```
+cd Obligatorio_ORT_Cloud/
+terraform init
+terraform plan 
+terraform apply -var-file=terraform.tfvars
+```
+
+3. Aqui vemos un ejemplo el despligue:
+
+<video width="320" height="240" controls>
+  <source src="./docs/despliegue/Despliegue.mp4" type="video/mp4">
+  Tu navegador no admite la reproducción de videos.
+</video>
