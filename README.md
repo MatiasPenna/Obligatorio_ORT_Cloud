@@ -189,7 +189,9 @@ terraform apply -var-file=terraform.tfvars
 
 https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/19f03a6a-cef0-4c95-95f7-ff401b0ab263
 
-4. Al finalizar podemos ver que nos devuelve las siguiente ID:
+4. Al finalizar podemos ver que nos devuelve la URL del Load Balancer:
+
+![ELB](https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/f0c4364d-b1f7-4e52-8eba-169a5f1f5c0c)
 
 
 
