@@ -23,7 +23,7 @@ resource "null_resource" "script_build" {
 }
 
  resource "null_resource" "script_kube" {
-  depends_on = [null_resource.script_build]
+  depends_on = [aws_elasticache_cluster.obl_ecache_cluster]
    provisioner "local-exec" {
      command = "sh ./scripts/kube.sh"
    }
