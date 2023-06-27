@@ -173,10 +173,17 @@ Creamos dentro de una región dos zonas de disponibilidad para tener redundancia
 
 ## Despliegue
 
-1. Clonar repositorio 
+1. Configurar aws-cli con las credenciales correctas:
+
+```
+vim ~aws/credentials
+```
+
+
+2. Clonar repositorio 
 ```https://github.com/MatiasPenna/Obligatorio_ORT_Cloud.git```
 
-2. Entrar a Obligatorio_ORT_Cloud, iniciarlo y ejecutarlo
+3. Entrar a Obligatorio_ORT_Cloud, iniciarlo y ejecutarlo
 
 ```
 cd Obligatorio_ORT_Cloud/
@@ -185,15 +192,15 @@ terraform plan
 terraform apply -var-file=terraform.tfvars
 ```
 
-3. Aqui vemos un ejemplo del despligue:
+4. Aqui vemos un ejemplo del despligue:
 
 https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/19f03a6a-cef0-4c95-95f7-ff401b0ab263
 
-4. Al finalizar podemos ver que nos devuelve la URL del Load Balancer:
+5. Al finalizar podemos ver que nos devuelve la URL del Load Balancer:
 
 ![ELB](https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/f0c4364d-b1f7-4e52-8eba-169a5f1f5c0c)
 
-# Tambien se puede obtener ejecutando este comando en la consola:
+Tambien se puede obtener ejecutando este comando en la consola:
 
 kubectl get service | grep amazonaws.com | grep -Eo '\S*' | tail -n3 | head -n1
 
