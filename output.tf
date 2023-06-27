@@ -7,7 +7,7 @@ output "eks_cluster" {
 }
 
  output "ecache_url" {
-   value = module.obli.0.elasticache_urlmodule
+   value = module.obli.elasticache_urlmodule
  }
 
 # output "ecache_url" {
