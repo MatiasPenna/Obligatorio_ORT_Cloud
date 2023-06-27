@@ -115,33 +115,33 @@ Somos la consultora BitBeat y hemos sido contratados para modernizar y desplegar
 | namevpc                          | vpc_obl    | Nombre de VPC |
 | nameig                           | igw_obli   | Nombre de Internet Gateway |
 | namertb                          | rtb_obl    | Nombre Route Table |
-| instancetype                     | t3.large   |   |
-| public-key                       | vockey     |   |
+| instancetype                     | t3.large   | Tipo de Instancia para los workers  |
+| public-key                       | vockey     | conexión contra los workers  |
 | nameclustereks                   | eks_obl_01 | Nombre del Cluster  |
-| versioneks                       | 1.27       |   |
-| nodegrpeks                       | worker_node_obl_01 |   |
+| versioneks                       | 1.27       | Version cluster de EKS  |
+| nodegrpeks                       | worker_node_obl_01 | Nombre de Grupo de Nodos  |
 | desiredeks                       | 2          | Cantidad de workers desaados  |
 | maxeks                           | 2          | Cantidad de workers maximos  |
 | mineks                           | 2          | Cantidad de workers minimos  |
-| nameec                           | oblecachesubn |    |
-| descec                           | obl_ecache |   |
-| namegrec                         | oblecachegrp |     |
-| familygrec                       | redis6.x   |     |
-| clusteridec                      | oblecache  |    |
-| engineclusterec                  | redis      |       |
-| engineverec                      | 6.2        |       |
-| nodetypeec                       | cache.t2.micro |       |
-| nodecachenodesec                 | 1          |    |
-| namerepoecr                      | obl_ecr    |
-| rol                              | LabRole    |      |
+| nameec                           | oblecachesubn | Nombre del Elastic Cache    |
+| descec                           | obl_ecache | Descripcion Elastic Cache  |
+| namegrec                         | oblecachegrp | Nombre de Grupo de Parametros |
+| familygrec                       | redis6.x   | Family del Grupo de Paramatros    |
+| clusteridec                      | oblecache  | Nombre del Cluster Elastic Cache   |
+| engineclusterec                  | redis      | Tipo de Engine |
+| engineverec                      | 6.2        | Versión |
+| nodetypeec                       | cache.t2.micro | Tipo de Nodo |
+| nodecachenodesec                 | 1          | Cantidad de Nodos |
+| namerepoecr                      | obl_ecr    | Nombre del ECR |
+| rol                              | LabRole    | Rol IAM |
 
 
 **_Los archivos con el código automatizado en bash se encuentran en el directorio_** **scripts** at [`./scripts`](./scripts).
 
 | Archivo                                              | Descripción                                                                                                                      |
 | ----------------------------------------------------  | ---------------------------------------------------------------------------------- |
-| [build](./scripts/build.sh)                     | Scripts de creación de namespaces, imagnes de docker |
-| [kube](./scripts/kube.sh)                     | Scripts de asignación de las imagenes de Docker, cantida de replicas y devuleve la URL del servicio publicado |
+| [build](./scripts/build.sh)                     | Creacioón de namespace, build de imagenes, login y push hacia ECR |
+| [kube](./scripts/kube.sh)                     | Configuración de los YAML y ejución de los deploy, modifica cantidad de replicas y devuleve la URL del servicio publicado (ELB) |
 
 
 
@@ -158,7 +158,7 @@ Creamos dentro de una región dos zonas de disponibilidad para tener redundancia
 
 | Componente                 |  Nombre  | Valor           | Uso                                                                                                     |
 | --------------------------- | ---------|-------------------- | ----------------------------------------------------- |
-| Grupo de seguridad  | sg_obli  |  Puerto 80  - Puerto 22 - Puerto 6379  | Permite el acceso a los servicios de eks|
+| Grupo de seguridad  | sg_obli  |  Puerto 80 - Puerto 6379  | Permite el acceso a los servicios de eks|
 | CIDR  | cidr_block   |  10.0.0.0 /16    | Configurar la red de las subnets|
 | Public subnet 1 | subnet_obl_01    |  10.0.1.0 /24    | Definicion de subnet publica|
 | Public subnet 2 | bsubnet_obl_01   |  10.0.2.0 /24    | Definicion de subnet publica|
@@ -168,8 +168,8 @@ Creamos dentro de una región dos zonas de disponibilidad para tener redundancia
 
 - VPC - Amazon Virtual Private Cloud 
 - EKS - Kubernetes 
-- ECR - registry
-- EC - Elastic Cache
+- ECR - Registry
+- AEC - Elastic Cache
 
 ## Despliegue
 
@@ -192,6 +192,10 @@ https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/19f03a6a-ce
 4. Al finalizar podemos ver que nos devuelve la URL del Load Balancer:
 
 ![ELB](https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/f0c4364d-b1f7-4e52-8eba-169a5f1f5c0c)
+
+# Tambien se puede obtener ejecutando este comando en la consola:
+
+kubectl get service | grep amazonaws.com | grep -Eo '\S*' | tail -n3 | head -n1
 
 
 
