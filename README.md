@@ -150,9 +150,9 @@ Somos la consultora BitBeat y hemos sido contratados para modernizar y desplegar
 ![alt text](docs/img/Diagrama.png)
 
 
-### Arquitectura :gear:
+### Arquitectura
 
-Creamos dentro de una región dos zonas de disponibilidad para tener redundancia y alta disponibilidad con dos cluster de kubernetes, un load balancer para cargar bien las aplicaciones, y dos subnets privadas. 
+Creamos dentro de una región dos zonas de disponibilidad para tener redundancia y alta disponibilidad
 
 ## Datos de la infraestructura 
 
