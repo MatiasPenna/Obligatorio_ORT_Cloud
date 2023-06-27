@@ -185,7 +185,6 @@ terraform plan
 terraform apply -var-file=terraform.tfvars
 ```
 
-3. Aqui vemos un ejemplo el despligue:
+3. Aqui vemos un ejemplo del despligue:
 
-<video src="./docs/despliegue/Despliegue.mp4" controls="controls" style="max-width: 730px;">
-</video>
+https://github.com/MatiasPenna/Obligatorio_ORT_Cloud/assets/64233385/4389860e-c2bd-4f7f-8fa5-84b6e32f069d
