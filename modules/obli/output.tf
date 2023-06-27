@@ -13,7 +13,3 @@ output "cluster_namemodule" {
 output "elasticache_cluster" {
   value = aws_elasticache_cluster.obl_ecache_cluster
 }
-
-output "script_build" {
-  value = null_resource.script_build
-}
