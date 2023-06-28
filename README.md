@@ -214,10 +214,6 @@ kubectl get service | grep amazonaws.com | grep -Eo '\S*' | tail -n3 | head -n1
 - AWS CLI v2.12.3
 
 
-## Referencias bibliográficas
-
-
-
 ## Autores
 - **Edgardo Chañ** - *Trabajo y documentacion* - [@echan92](https://github.com/echan92)
 - **Matias Penna** - *Trabajo y documentación* - [@MatiasPenna](https://github.com/MatiasPenna)
